@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hexa-minesweeper</title>
+    <link rel="stylesheet" href="hexaCSS_light.css">
+  </head>
+
+  <body>
+    <div id="info">
+      <span>Mines left: <span id="scoreEl">0</span></span>
+      <br>
+      <span>Time lapsed: <span id="timerEl">0</span> sec.</span>
+    </div>
+
+    <div class="popup" id="gameOverEl">
+      <label>Game over.<br>Better luck next time!</label>
+      <br>
+      <br>
+      <p>
+        Press and hold 
+        <span onmousedown="showFieldOnLoss()" onmouseup="showLoserMenue()" onmouseout="showLoserMenue()"id="hold2SeeFieldOnLoss">
+          here
+        </span>
+         to reveal the field</p>
+      <br>
+      <div>
+        <select id="fieldSizeOnLoss" onchange="selectFieldSizeOnLoss()">
+          <option value=.4>small field</option>
+          <option value=.6>medium field</option>
+          <option value=.9>big field</option>
+        </select>
+        <select id="difficultyOnLoss" onchange="selectDifficultyOnLoss()">
+          <option value=.15>easy (mines - 15%)</option>
+          <option value=.2>medium (mines - 20%)</option>
+          <option value=.25>hard (mines - 25%)</option>
+        </select>
+      </div>
+      <button id="buttonLoserEl">Play again</button>
+    </div>
+
+    <div class="popup" id="gameWonEl">
+      <label>Congrats! You've won!</label>
+      <p>for</p>
+      <h1 id="timeSpentEl">0</h1>
+      <p>seconds</p>
+      <br>
+      <div>
+        <select id="fieldSizeOnWin"onchange="selectFieldSizeOnWin()">
+          <option value=.4>small field</option>
+          <option value=.6>medium field</option>
+          <option value=.9>big field</option>
+        </select>
+        <select id="difficultyOnWin" onchange="selectDifficultyOnWin()">
+          <option value=.15>easy (mines - 15%)</option>
+          <option value=.2>medium (mines - 20%)</option>
+          <option value=.25>hard (mines - 25%)</option>
+        </select>
+      </div>
+      <button id="buttonWinnerEl">Play again</button>
+    </div>
+
+    <div class="popup" id="gameStartEl">
+      <h1>Minesweeper game</h1>
+      <br>
+      <div>
+        <select id="fieldSizeOnStart"onchange="selectFieldSizeOnStart()">
+          <option value=0 disabled selected hidden>field size</option>
+          <option value=.4>small field</option>
+          <option value=.6>medium field</option>
+          <option value=.9>big field</option>
+        </select>
+        <select id="difficultyOnStart" onchange="selectDifficultyOnStart()">
+          <option value=0 disabled selected hidden>difficulty</option>
+          <option value=.15>easy (mines - 15%)</option>
+          <option value=.2>medium (mines - 20%)</option>
+          <option value=.25>hard (mines - 25%)</option>
+        </select>
+      </div>
+      <button id="startButtonEl">Select field size and difficulty</button>
+    </div>
+
+    <div id="questionMark">
+      <img src="Q_Mark.png" alt="???" width="20" height="20">
+    </div>
+    
+    <div class="hintPopup" id="hintEl">
+      <p>Purpose of the game - reveal all cells which have no mines.</p>
+      <p>Left-click with the mouse on a cell to reveal it.</p>
+      <p>Right-click to set a flag on a (presumably) mined cell and prevent from accidental left-click.</p>
+      <p>Digits in revealed cells show number of "neighbouring" mined cells.</p>
+    </div>
+
+    <canvas id="canvas">Your browser does not support canvas</canvas>
+
+    <script src="hexaJS_light.js"></script>
+
+  </body>
+</html>
